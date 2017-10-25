@@ -55,8 +55,7 @@ fsm_status_e fsm_process_event(fsm_t *state_machine, fsm_state_event event)
 
     if (transition)
     {
-        _fsm_update_current_state(state_machine, transition->next_state);
-        return OK;
+        return _fsm_update_current_state(state_machine, transition->next_state);
     }
     return ERROR;
 }

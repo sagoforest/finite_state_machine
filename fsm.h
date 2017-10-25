@@ -27,7 +27,10 @@ typedef uint32_t fsm_state_event;
  */
 typedef struct fsm_transition_t
 {
+    // the state event for this transition
     fsm_state_event event;
+
+    // the destination state for this transition
     struct fsm_state_t *next_state;
 } fsm_transition_t;
 
@@ -36,9 +39,16 @@ typedef struct fsm_transition_t
  */
 typedef struct fsm_state_t
 {
+    // the name of the state
     const char *name;
+
+    // a pointer to the transitions for this state
     fsm_transition_t *transitions;
+
+    // the number of transitions for this state
     int num_transitions;
+
+    // lifecycle callbacks
     fsm_lifecycle_callback on_enter;
     fsm_lifecycle_callback on_exit;
 } fsm_state_t;
